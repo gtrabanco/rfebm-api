@@ -1,0 +1,3 @@
+export const NATIONAL_FEDERATION_ID = 9999;
+
+export const VALIDATION_ERROR_CODE = "VALIDATION";
