@@ -1,13 +1,13 @@
 import { type Elysia } from "elysia";
-import categories from "./routes/categories";
-import championships from "./routes/championships";
-import court from "./routes/court";
-import courts from "./routes/courts";
-import federation from "./routes/federation";
-import federations from "./routes/federations";
-import seasons from "./routes/seasons";
-import tournament from "./routes/tournament";
-import tournaments from "./routes/tournaments";
+import categories from "./categories";
+import championships from "./championships";
+import court from "./court";
+import courts from "./courts";
+import federation from "./federation";
+import federations from "./federations";
+import seasons from "./seasons";
+import tournament from "./tournament";
+import tournaments from "./tournaments";
 
 export const apiv1 = (app: Elysia) =>
   app
