@@ -8,6 +8,7 @@ import federations from "./federations";
 import seasons from "./seasons";
 import tournament from "./tournament";
 import tournaments from "./tournaments";
+import match from "./match";
 
 export const apiv1 = (app: Elysia) =>
   app
@@ -24,6 +25,7 @@ export const apiv1 = (app: Elysia) =>
         `${request.url}/tournament/:id[/:week]`,
         `${request.url}/courts/:federationId`,
         `${request.url}/court/:courtId`,
+        `${request.url}/match/:matchId`,
       ],
     }))
     .get("/version", ({ store }) => ({ version: store.version }))
@@ -35,4 +37,5 @@ export const apiv1 = (app: Elysia) =>
     .use(tournaments)
     .use(tournament)
     .use(courts)
-    .use(court);
+    .use(court)
+    .use(match);

@@ -1,4 +1,4 @@
-import { getWeekResults } from "@gtrabanco/bun-rfebm-scraper-library";
+import { getWeekResults } from "@gtrabanco/bun-rfebm-scraper-library/get-week-results";
 import type { Elysia } from "elysia";
 import { t } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";

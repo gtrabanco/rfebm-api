@@ -1,5 +1,7 @@
-import { getWeekResults } from "@gtrabanco/bun-rfebm-scraper-library";
-import { WeekResultsPageParams } from "@gtrabanco/bun-rfebm-scraper-library/src/request-and-parse/get-week-results/get-week-results";
+import {
+  getWeekResults,
+  WeekResultsPageParams,
+} from "@gtrabanco/bun-rfebm-scraper-library/get-week-results";
 import type { Elysia } from "elysia";
 import { t } from "elysia";
 import { NATIONAL_FEDERATION_ID } from "../../../constants";
