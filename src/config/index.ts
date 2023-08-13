@@ -1,7 +1,7 @@
+import { Serve } from "bun";
 import { ElysiaConfig } from "elysia";
 import { getServerAddressToConfigure } from "./get-server-address-to-configure";
 import { getServerPortToConfigure } from "./get-server-port-to-configure";
-import { Serve } from "bun";
 
 export const config: ElysiaConfig = {
   serve: {

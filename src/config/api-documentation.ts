@@ -1,4 +1,4 @@
-import { config } from "../library/config";
+import { config } from ".";
 import { API_DESCRIPTION } from "./api-description";
 
 export const API_DOCUMENTATION = {
