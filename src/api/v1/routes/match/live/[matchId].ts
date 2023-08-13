@@ -1,12 +1,9 @@
-import { getPrevious } from "@gtrabanco/bun-rfebm-scraper-library/get-previous";
 import { getLiveData } from "@gtrabanco/bun-rfebm-scraper-library/get-live-data";
+import { getPrevious } from "@gtrabanco/bun-rfebm-scraper-library/get-previous";
 import type { Elysia } from "elysia";
 import { t } from "elysia";
-import { responseSchemaWithPayloadSchema } from "../../libraries/response-schema-with-payload-schema";
-// matchId: 1298587: Vetusta 2023-24 (with date and place set)
-// matchId: 1298818: Vetusta 2023-24 (only place set)
-// matchId: 1221062: Vetusta 2022-23
-const payloadSchema = t.Any();
+import { responseSchemaWithPayloadSchema } from "../../../libraries/response-schema-with-payload-schema";
+import { mapMatchLive } from "./maps/map-match-live";
 
 export default (app: Elysia) =>
   app.get(
@@ -19,8 +16,12 @@ export default (app: Elysia) =>
       }
 
       const matchLiveDetails = await getLiveData({ matchId });
+      if (!matchLiveDetails) {
+        set.status = 204;
+        return;
+      }
 
-      return { previous, matchLiveDetails };
+      return mapMatchLive({ previous, matchLiveDetails });
     },
     {
       params: t.Object({
@@ -29,6 +30,6 @@ export default (app: Elysia) =>
           maximum: Number.MAX_SAFE_INTEGER,
         }),
       }),
-      response: responseSchemaWithPayloadSchema(payloadSchema),
+      response: responseSchemaWithPayloadSchema(t.Any()),
     },
   );
