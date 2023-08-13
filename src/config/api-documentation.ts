@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 servers.push({
-  url: `https://rfbem.7m.com.es`,
+  url: `https://rfbem.7metros.es`,
   description: "Production server",
 });
 
@@ -19,7 +19,7 @@ export const API_DOCUMENTATION = {
     title: "RFEBM API",
     description: API_DESCRIPTION,
     version: "1.0.0",
-    termsOfService: "https://rfbem.7m.es/terms",
+    termsOfService: "/terms",
     contact: {
       name: "Gabriel Trabanco",
       email: "gtrabanco@fwok.org",
