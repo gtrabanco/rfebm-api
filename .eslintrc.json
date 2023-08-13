@@ -25,5 +25,18 @@
     "@typescript-eslint/no-namespace": "off",
     "no-case-declarations": "off"
   },
-  "ignorePatterns": ["example/*", "__tests__/**/*", "**/playground*"]
+  "ignorePatterns": [
+    "example/*",
+    "__tests__/**/*",
+    "**/playground*",
+    "dist/**/*"
+  ],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }

@@ -4,8 +4,8 @@ import { Serve } from "bun";
 import { Elysia } from "elysia";
 import api from "./api/index.ts";
 import { API_DOCUMENTATION } from "./config/api-documentation.ts";
+import { config } from "./config/index.ts";
 import { VALIDATION_ERROR_CODE } from "./constants.ts";
-import { config } from "./library/config/index.ts";
 
 export const App = new Elysia()
   .on("error", ({ code, set }) => {
