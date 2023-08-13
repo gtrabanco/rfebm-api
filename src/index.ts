@@ -19,13 +19,7 @@ export const App = new Elysia()
   .on("request", ({ request }) => {
     console.log(`${request.method} ${request.url} - ${request.url}`);
   })
-  .use(
-    cors({
-      origin: `*`,
-      methods: ["GET", "OPTIONS"],
-      preflight: true,
-    }),
-  )
+  .use(cors())
   .use(
     swagger({
       path: "/openapi",
