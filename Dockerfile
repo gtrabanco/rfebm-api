@@ -1,4 +1,5 @@
 FROM oven/bun
+LABEL org.opencontainers.image.source=https://github.com/gtrabanco/rfebm-api
 
 ARG GITHUB_TOKEN
 ENV SERVER_PORT 3000
