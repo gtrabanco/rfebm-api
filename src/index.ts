@@ -7,8 +7,6 @@ import { API_DOCUMENTATION } from "./config/api-documentation.ts";
 import { config } from "./config/index.ts";
 import { VALIDATION_ERROR_CODE } from "./constants.ts";
 
-console.log(process.env);
-
 export const App = new Elysia()
   .on("error", ({ code, set, error }) => {
     if (code === VALIDATION_ERROR_CODE) {
