@@ -12,6 +12,7 @@
     "start": "bun run src/index.ts",
     "test": "bun test",
     "lint": "eslint --ext .ts,.js .",
+    "lint:staged": "bun lint",
     "format:code": "prettier --write .",
     "prepare": "husky install && relative-deps"
   },
@@ -29,6 +30,7 @@
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-prettier": "5.0.0",
     "husky": "8.0.3",
+    "lint-staged": "13.2.3",
     "prettier": "3.0.1",
     "relative-deps": "1.0.7"
   },
@@ -37,6 +39,12 @@
   },
   "engines": {
     "bun": "0.7.3"
+  },
+  "relativeDependencies": {
+    "@gtrabanco/bun-rfebm-scraper-library": "../bun-rfebm-scraper-library"
+  },
+  "lint-staged": {
+    "*": "bun lint"
   },
   "keywords": [
     "handball",
@@ -50,8 +58,5 @@
     "entrenadores",
     "beach",
     "playa"
-  ],
-  "relativeDependencies": {
-    "@gtrabanco/bun-rfebm-scraper-library": "../bun-rfebm-scraper-library"
-  }
+  ]
 }

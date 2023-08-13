@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 bun format:code
-bun lint
+bun lint:staged
 
 if git status -sb | grep -qis '[ts|js]$'; then
   bun test
