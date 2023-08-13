@@ -1,17 +1,18 @@
+import { config } from ".";
 import { API_DESCRIPTION } from "./api-description";
 
-// const servers = [];
-// if (process.env.NODE_ENV === "development") {
-//   servers.push({
-//     url: `http://${config.serve!.hostname}:${config.serve!.port}`,
-//     description: "Local server",
-//   });
-// }
+const servers = [];
+if (process.env.NODE_ENV === "development") {
+  servers.push({
+    url: `http://${config.serve!.hostname}:${config.serve!.port}`,
+    description: "Local server",
+  });
+}
 
-// servers.push({
-//   url: `https://rfbem.7m.es`,
-//   description: "Production server",
-// });
+servers.push({
+  url: `https://rfbem.7m.com.es`,
+  description: "Production server",
+});
 
 export const API_DOCUMENTATION = {
   info: {
