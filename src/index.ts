@@ -7,6 +7,8 @@ import { API_DOCUMENTATION } from "./config/api-documentation.ts";
 import { config } from "./config/index.ts";
 import { VALIDATION_ERROR_CODE } from "./constants.ts";
 
+console.log(process.env);
+
 export const App = new Elysia()
   .on("error", ({ code, set, error }) => {
     if (code === VALIDATION_ERROR_CODE) {
@@ -19,12 +21,7 @@ export const App = new Elysia()
   .on("request", ({ request }) => {
     console.log(`${request.method} ${request.url} - ${request.url}`);
   })
-  .use(
-    cors({
-      // origin: `${config.serve!.hostname}:${config.serve!.port}`,
-      methods: ["GET", "OPTIONS"],
-    }),
-  )
+  .use(cors())
   .use(
     swagger({
       path: "/openapi",
