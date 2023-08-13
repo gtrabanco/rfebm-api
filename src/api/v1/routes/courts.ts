@@ -1,7 +1,7 @@
 import {
   CourtInfoAction,
   getCourt,
-} from "@gtrabanco/bun-rfebm-scraper-library";
+} from "@gtrabanco/bun-rfebm-scraper-library/get-court";
 import { t, type Elysia } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 

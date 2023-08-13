@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { apiv1 } from "./v1";
+import { apiv1 } from "./v1/routes";
 
 export default (app: Elysia) =>
   app

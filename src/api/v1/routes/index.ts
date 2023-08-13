@@ -1,13 +1,14 @@
 import { type Elysia } from "elysia";
-import categories from "./routes/categories";
-import championships from "./routes/championships";
-import court from "./routes/court";
-import courts from "./routes/courts";
-import federation from "./routes/federation";
-import federations from "./routes/federations";
-import seasons from "./routes/seasons";
-import tournament from "./routes/tournament";
-import tournaments from "./routes/tournaments";
+import categories from "./categories";
+import championships from "./championships";
+import court from "./court";
+import courts from "./courts";
+import federation from "./federation";
+import federations from "./federations";
+import seasons from "./seasons";
+import tournament from "./tournament";
+import tournaments from "./tournaments";
+import match from "./match";
 
 export const apiv1 = (app: Elysia) =>
   app
@@ -24,6 +25,7 @@ export const apiv1 = (app: Elysia) =>
         `${request.url}/tournament/:id[/:week]`,
         `${request.url}/courts/:federationId`,
         `${request.url}/court/:courtId`,
+        `${request.url}/match/:matchId`,
       ],
     }))
     .get("/version", ({ store }) => ({ version: store.version }))
@@ -35,4 +37,5 @@ export const apiv1 = (app: Elysia) =>
     .use(tournaments)
     .use(tournament)
     .use(courts)
-    .use(court);
+    .use(court)
+    .use(match);

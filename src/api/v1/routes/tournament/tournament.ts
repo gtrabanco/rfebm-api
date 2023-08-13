@@ -1,4 +1,4 @@
-import { getAllMatches } from "@gtrabanco/bun-rfebm-scraper-library";
+import { getAllMatches } from "@gtrabanco/bun-rfebm-scraper-library/get-all-matches";
 import type { Elysia } from "elysia";
 import { t } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../../libraries/response-schema-with-payload-schema";

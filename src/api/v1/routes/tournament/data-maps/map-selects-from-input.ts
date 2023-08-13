@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  GetAllMatches,
-  GetWeekResults,
-} from "@gtrabanco/bun-rfebm-scraper-library";
-import { FEDERATION_KEY_SHIELD_URL } from "@gtrabanco/bun-rfebm-scraper-library/src/types/federation";
+import { GetAllMatches } from "@gtrabanco/bun-rfebm-scraper-library/get-all-matches";
+import { GetWeekResults } from "@gtrabanco/bun-rfebm-scraper-library/get-week-results";
 
 export function mapSelectsFromInput(input: GetWeekResults | GetAllMatches) {
   const { selected: _1, ...federation } = input.federation;
@@ -19,7 +16,7 @@ export function mapSelectsFromInput(input: GetWeekResults | GetAllMatches) {
   return {
     federation: {
       ...federation,
-      shieldImageUrl: federation[FEDERATION_KEY_SHIELD_URL].toString(),
+      shieldImageUrl: federation.shieldImageUrl.toString(),
       web: federation.web?.toString(),
     },
     season,

@@ -14,9 +14,6 @@ export const App = new Elysia()
       return "Invalid param or query value.";
     }
   })
-  .on("response", (args) => {
-    console.log(args);
-  })
   .use(
     cors({
       origin: `${config.serve!.hostname}:${config.serve!.port}`,

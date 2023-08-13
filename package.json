@@ -12,30 +12,39 @@
     "start": "bun run src/index.ts",
     "test": "bun test",
     "lint": "eslint --ext .ts,.js .",
+    "lint:staged": "bun lint",
     "format:code": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install && relative-deps"
   },
   "dependencies": {
     "@elysiajs/cors": "0.6.0",
     "@elysiajs/swagger": "0.6.0",
-    "@gtrabanco/bun-rfebm-scraper-library": "0.1.4",
-    "elysia": "0.6.9"
+    "@gtrabanco/bun-rfebm-scraper-library": "1.0.5",
+    "elysia": "0.6.10"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "6.3.0",
     "@typescript-eslint/parser": "6.3.0",
     "bun-types": "0.7.3",
-    "eslint": "8.46.0",
+    "eslint": "8.47.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-prettier": "5.0.0",
     "husky": "8.0.3",
-    "prettier": "3.0.1"
+    "lint-staged": "13.2.3",
+    "prettier": "3.0.1",
+    "relative-deps": "1.0.7"
   },
   "peerDependencies": {
     "typescript": "5.1.6"
   },
   "engines": {
     "bun": "0.7.3"
+  },
+  "relativeDependencies": {
+    "@gtrabanco/bun-rfebm-scraper-library": "../bun-rfebm-scraper-library"
+  },
+  "lint-staged": {
+    "*": "bun lint"
   },
   "keywords": [
     "handball",
