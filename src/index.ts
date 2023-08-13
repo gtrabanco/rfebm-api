@@ -21,8 +21,9 @@ export const App = new Elysia()
   })
   .use(
     cors({
-      // origin: `${config.serve!.hostname}:${config.serve!.port}`,
+      origin: `*`,
       methods: ["GET", "OPTIONS"],
+      preflight: true,
     }),
   )
   .use(
