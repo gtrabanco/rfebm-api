@@ -1,8 +1,6 @@
 import { config } from ".";
 import { API_DESCRIPTION } from "./api-description";
 
-console.log(process.env);
-
 const servers = [];
 if (process.env.NODE_ENV === "development") {
   servers.push({
