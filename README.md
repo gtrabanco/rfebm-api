@@ -1,15 +1,8 @@
-# rfebm-api
-
-To install dependencies:
+# RFEBM API
 
 ```bash
 bun install
+bun run src/index.ts
 ```
 
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v0.6.4. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+This project requires [Bun](https://bun.sh)
