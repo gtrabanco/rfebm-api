@@ -9,9 +9,15 @@ import { VALIDATION_ERROR_CODE } from "./constants.ts";
 
 export const App = new Elysia()
   .on("error", ({ code, set, error }) => {
+    if (code === VALIDATION_ERROR_CODE && error.type === "response") {
+      set.status = 204; // No Content. If the response is not as we want is because there is no content for the request.
+      return;
+    }
+
     if (code === VALIDATION_ERROR_CODE) {
+      // console.error(error);
       set.status = 422;
-      return "Invalid param or query value.";
+      return "Invalid or missing param or query, value.";
     }
 
     console.log("Error '%s' - %s", code, error);

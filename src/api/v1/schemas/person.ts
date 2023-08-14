@@ -7,4 +7,5 @@ export const Person = t.Object({
     default: URL_NO_IMAGE_PERSON,
   }),
   role: t.String(),
+  age: t.Optional(t.Number()),
 });
