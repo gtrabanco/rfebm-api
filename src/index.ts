@@ -25,7 +25,6 @@ export const App = new Elysia()
   })
   .on("request", ({ request, set }) => {
     console.log(`${request.method} ${request.url} - ${request.url}`);
-    console.log(request.headers);
 
     // Set X-Robots-Tag header to prevent indexing
     // Reference: https://developers.google.com/search/reference/robots_meta_tag
