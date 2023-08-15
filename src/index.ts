@@ -24,6 +24,10 @@ export const App = new Elysia()
   })
   .on("request", ({ request }) => {
     console.log(`${request.method} ${request.url} - ${request.url}`);
+    request.headers.set(
+      "X-Robots-Tag",
+      "none, noarchive, nosnippet, nositelinkssearchbox, noodp, notranslate, noimageindex",
+    );
   })
   .use(cors())
   .use(
@@ -32,6 +36,7 @@ export const App = new Elysia()
       documentation: API_DOCUMENTATION,
     }),
   )
+  .get("/robots.txt", () => `User-agent: *\nDisallow: /`) // Disallow all robots to index anything here
   .group("/api", (app) => app.use(api))
   .listen(config.serve as Partial<Serve>);
 
