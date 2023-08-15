@@ -1,12 +1,12 @@
 import { t } from "elysia";
-import { Person } from "../../../schemas/person";
+import { PersonInTeamLive } from "./person-in-team-live";
 
 export const MatchAction = t.Object({
   time: t.String(),
   event: t.String(),
   period: t.Numeric(),
   team: t.String(),
-  person: Person,
+  person: PersonInTeamLive,
   score: t.Optional(
     t.Object({
       local: t.Numeric(),

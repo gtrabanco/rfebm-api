@@ -4,6 +4,7 @@ import type { Elysia } from "elysia";
 import { t } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../../../libraries/response-schema-with-payload-schema";
 import { mapMatchLive } from "./maps/map-match-live";
+import { MatchMappedResult } from "./schemas/match-mapped-result";
 
 export default (app: Elysia) =>
   app.get(
@@ -20,7 +21,6 @@ export default (app: Elysia) =>
         set.status = 204;
         return;
       }
-
       return mapMatchLive({ previous, matchLiveDetails });
     },
     {
@@ -32,6 +32,6 @@ export default (app: Elysia) =>
           description: "The id of the match to get the current details of.",
         }),
       }),
-      response: responseSchemaWithPayloadSchema(t.Any()),
+      response: responseSchemaWithPayloadSchema(MatchMappedResult),
     },
   );
