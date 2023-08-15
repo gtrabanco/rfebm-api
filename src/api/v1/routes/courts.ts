@@ -3,6 +3,7 @@ import {
   getCourt,
 } from "@gtrabanco/bun-rfebm-scraper-library/get-court";
 import { t, type Elysia } from "elysia";
+import { NATIONAL_FEDERATION_ID } from "../../../constants";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 
 const payloadSchema = t.Array(
@@ -44,6 +45,7 @@ export default (app: Elysia) =>
           title: "Federation ID",
           description:
             "Federation ID to get all the courts that belong to it (Any match of that that federation tournament is played in that court).",
+          default: NATIONAL_FEDERATION_ID,
         }),
       }),
       response: responseSchemaWithPayloadSchema(payloadSchema),

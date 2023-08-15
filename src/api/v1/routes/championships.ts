@@ -5,6 +5,7 @@ import {
 import type { Elysia } from "elysia";
 import { t } from "elysia";
 import { NATIONAL_FEDERATION_ID } from "../../../constants";
+import { getCurrentSeasonId } from "../../../library/get-current-season-id";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 import { responseWithErrors } from "../libraries/response-with-errors";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
@@ -72,15 +73,15 @@ export default (app: Elysia) =>
               "The ID of the subfederation. You can get this ID from the /federation/:id endpoint",
           }),
         ),
-        seasonId: t.Optional(
-          t.Numeric({
-            minimum: 0,
-            maximum: Number.MAX_SAFE_INTEGER,
-            title: "Season ID",
-            description:
-              "The ID of the season. Defaults to the current season. You can get this ID from the /seasons endpoint",
-          }),
-        ),
+        seasonId: t.Numeric({
+          minimum: 0,
+          maximum: Number.MAX_SAFE_INTEGER,
+          title: "Season ID",
+          description:
+            "The ID of the season. Defaults to the current season. You can get this ID from the /seasons endpoint",
+          default: getCurrentSeasonId(),
+        }),
+
         categoryId: t.Numeric({
           minimum: 0,
           maximum: Number.MAX_SAFE_INTEGER,
