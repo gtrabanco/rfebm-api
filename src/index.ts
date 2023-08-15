@@ -40,6 +40,12 @@ export const App = new Elysia()
   )
   .get("/robots.txt", () => `User-agent: *\nDisallow: /`) // Disallow all robots to index anything here
   .group("/api", (app) => app.use(api))
+  .route("ALL", "", ({ set }) => {
+    set.redirect = `/openapi`;
+  })
+  .route("ALL", "*", ({ set }) => {
+    set.redirect = `/openapi`;
+  })
   .listen(config.serve as Partial<Serve>);
 
 export const endpointAddress = `${App.server!.hostname}:${App.server!.port}`;
