@@ -32,16 +32,7 @@ export const App = new Elysia()
       "X-Robots-Tag"
     ] = `none, noarchive, nosnippet, nositelinkssearchbox, noodp, notranslate, noimageindex, unavailable_after: ${new Date().toISOString()}`;
   })
-  .use(
-    rateLimit({
-      duration: 15000,
-      max: 10,
-      responseCode: 429,
-      responseMessage: "Rate limit exceeded, retry in 15 seconds.",
-      countFailedRequest: false,
-      skip: (request: Request) => request.url.toString().includes("/live"),
-    }),
-  )
+  .use(rateLimit(config.rateLimit))
   .use(cors())
   .use(
     swagger({
