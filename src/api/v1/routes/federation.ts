@@ -1,6 +1,7 @@
 import { getWeekResults } from "@gtrabanco/bun-rfebm-scraper-library/get-week-results";
 import type { Elysia } from "elysia";
 import { t } from "elysia";
+import { NATIONAL_FEDERATION_ID } from "../../../constants";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 import { federationSchema } from "../schemas/federation-schema";
 
@@ -8,19 +9,19 @@ export default (app: Elysia) =>
   app.get(
     "/federation/:id",
     async ({ params, set }) => {
-      const json = await getWeekResults({
+      const data = await getWeekResults({
         federationId: params.id,
       });
 
-      const federation = json?.federation;
+      const federation = data?.federation;
       const subFederations =
-        json?.subfederations?.map(({ id, name }) => ({
+        data?.subfederations?.map(({ id, name }) => ({
           id,
           name,
         })) ?? [];
 
       if (
-        !json ||
+        !data ||
         !federation?.id ||
         !federation?.name ||
         !federation?.shieldImageUrl
@@ -45,6 +46,7 @@ export default (app: Elysia) =>
         id: t.Numeric({
           minimum: 1,
           maximum: Number.MAX_SAFE_INTEGER,
+          default: NATIONAL_FEDERATION_ID,
         }),
       }),
       response: responseSchemaWithPayloadSchema(federationSchema),
