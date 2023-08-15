@@ -10,7 +10,7 @@ export const config: ElysiaConfig & { rateLimit: any } = {
     development: !process.env.NODE_ENV?.toLowerCase().startsWith("prod"),
   } as Partial<Serve>,
   rateLimit: {
-    duration: 15000,
+    duration: 60000,
     max: 10,
     responseCode: 429,
     responseMessage: "Rate limit exceeded, retry in 15 seconds.",
