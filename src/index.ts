@@ -2,6 +2,7 @@ import cors from "@elysiajs/cors";
 import swagger from "@elysiajs/swagger";
 import { Serve } from "bun";
 import { Elysia } from "elysia";
+import { rateLimit } from "elysia-rate-limit";
 import api from "./api/index.ts";
 import { API_DOCUMENTATION } from "./config/api-documentation.ts";
 import { config } from "./config/index.ts";
@@ -31,6 +32,16 @@ export const App = new Elysia()
       "X-Robots-Tag"
     ] = `none, noarchive, nosnippet, nositelinkssearchbox, noodp, notranslate, noimageindex, unavailable_after: ${new Date().toISOString()}`;
   })
+  .use(
+    rateLimit({
+      duration: 15000,
+      max: 10,
+      responseCode: 429,
+      responseMessage: "Rate limit exceeded, retry in 15 seconds.",
+      countFailedRequest: false,
+      skip: (request: Request) => request.url.toString().includes("/live"),
+    }),
+  )
   .use(cors())
   .use(
     swagger({
