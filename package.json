@@ -20,7 +20,7 @@
   "dependencies": {
     "@elysiajs/cors": "0.6.0",
     "@elysiajs/swagger": "0.6.0",
-    "@gtrabanco/bun-rfebm-scraper-library": "1.0.7",
+    "@gtrabanco/bun-rfebm-scraper-library": "1.0.8",
     "elysia": "0.6.10"
   },
   "devDependencies": {
