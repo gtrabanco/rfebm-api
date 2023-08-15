@@ -22,8 +22,14 @@ export const App = new Elysia()
 
     console.log("Error '%s' - %s", code, error);
   })
-  .on("request", ({ request }) => {
+  .on("request", ({ request, set }) => {
     console.log(`${request.method} ${request.url} - ${request.url}`);
+
+    // Set X-Robots-Tag header to prevent indexing
+    // Reference: https://developers.google.com/search/reference/robots_meta_tag
+    set.headers[
+      "X-Robots-Tag"
+    ] = `none, noarchive, nosnippet, nositelinkssearchbox, noodp, notranslate, noimageindex, unavailable_after: ${new Date().toISOString()}`;
   })
   .use(cors())
   .use(
@@ -32,6 +38,7 @@ export const App = new Elysia()
       documentation: API_DOCUMENTATION,
     }),
   )
+  .get("/robots.txt", () => `User-agent: *\nDisallow: /`) // Disallow all robots to index anything here
   .group("/api", (app) => app.use(api))
   .listen(config.serve as Partial<Serve>);
 
