@@ -28,6 +28,8 @@ export default (app: Elysia) =>
         matchId: t.Numeric({
           minimum: 1,
           maximum: Number.MAX_SAFE_INTEGER,
+          title: "Match Id",
+          description: "The id of the match to get the current details of.",
         }),
       }),
       response: responseSchemaWithPayloadSchema(t.Any()),

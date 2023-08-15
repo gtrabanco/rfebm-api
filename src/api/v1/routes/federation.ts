@@ -7,10 +7,10 @@ import { federationSchema } from "../schemas/federation-schema";
 
 export default (app: Elysia) =>
   app.get(
-    "/federation/:id",
-    async ({ params, set }) => {
+    "/federation/:federationId",
+    async ({ params: { federationId }, set }) => {
       const data = await getWeekResults({
-        federationId: params.id,
+        federationId: federationId,
       });
 
       const federation = data?.federation;
@@ -43,10 +43,12 @@ export default (app: Elysia) =>
     },
     {
       params: t.Object({
-        id: t.Numeric({
+        federationId: t.Numeric({
           minimum: 1,
           maximum: Number.MAX_SAFE_INTEGER,
           default: NATIONAL_FEDERATION_ID,
+          title: "Federation ID",
+          description: "The federation ID to get details from.",
         }),
       }),
       response: responseSchemaWithPayloadSchema(federationSchema),
