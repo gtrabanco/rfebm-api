@@ -6,8 +6,7 @@ import { selectOptionsSchema } from "../schemas/select-options-schema";
 export default (app: Elysia) =>
   app.get(
     "/federations",
-    async ({ set, request }) => {
-      console.info(request);
+    async ({ set }) => {
       const json = await getWeekResults();
       const { federations = [] } = json ?? {};
       const payload = federations.map(({ id, name }) => ({
