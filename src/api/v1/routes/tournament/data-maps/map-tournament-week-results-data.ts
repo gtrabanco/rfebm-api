@@ -1,4 +1,4 @@
-import { GetWeekResults } from "@gtrabanco/bun-rfebm-scraper-library";
+import { GetWeekResults } from "@gtrabanco/bun-rfebm-scraper-library/get-week-results";
 import { mapSelectsFromInput } from "./map-selects-from-input";
 
 export function mapTournamentsWeekResultsData(input: GetWeekResults) {
@@ -43,5 +43,9 @@ export function mapTournamentsWeekResultsData(input: GetWeekResults) {
     shieldImageUrl: t.shieldImageUrl.toString(),
   }));
 
-  return { matches, teams };
+  const responseObject: any = { matches, teams };
+
+  if (input.weeks) responseObject.weeks = input.weeks;
+
+  return responseObject;
 }
