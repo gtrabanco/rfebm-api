@@ -5,9 +5,14 @@ import {
 import type { Elysia } from "elysia";
 import { t } from "elysia";
 import { NATIONAL_FEDERATION_ID } from "../../../constants";
+import { getCurrentSeasonId } from "../../../library/get-current-season-id";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 import { responseWithErrors } from "../libraries/response-with-errors";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
+
+selectOptionsSchema.title = "Categories";
+selectOptionsSchema.description =
+  "Get the categories that have data available for the given federation, subfederation and season. By default, federation is the national federation, season is the current season and subfederation is optional.";
 
 export default (app: Elysia) =>
   app.get(
@@ -75,6 +80,7 @@ export default (app: Elysia) =>
             title: "Season ID",
             description:
               "The ID of the season. Defaults to the current season. You can get this ID from the /seasons endpoint",
+            default: getCurrentSeasonId(),
           }),
         ),
       }),

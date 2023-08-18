@@ -3,6 +3,9 @@ import type { Elysia } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
 
+selectOptionsSchema.title = "Federations";
+selectOptionsSchema.description = `Get a list of all available federations.`;
+
 export default (app: Elysia) =>
   app.get(
     "/federations",

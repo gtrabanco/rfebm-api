@@ -15,6 +15,10 @@ const payloadSchema = t.Array(
     province: t.String(),
     timezone: t.String(),
   }),
+  {
+    title: "Courts information",
+    description: `This gives all the courts that have matches this current season in a federation. This means that when the data of the next season is not loaded you can receive not results or information from previous seasons.`,
+  },
 );
 
 export default (app: Elysia) =>

@@ -6,11 +6,17 @@ import { mapTournamentMatchesData } from "./data-maps/map-tournament-matches-dat
 import { Match } from "./schemas/match";
 import { TeamInMatch } from "./schemas/team-in-match";
 
-const payloadSchema = t.Object({
-  teams: t.Array(TeamInMatch),
-  weeks: t.Record(t.Number(), t.String()),
-  calendar: t.Array(Match),
-});
+const payloadSchema = t.Object(
+  {
+    teams: t.Array(TeamInMatch),
+    weeks: t.Record(t.Number(), t.String()),
+    calendar: t.Array(Match),
+  },
+  {
+    title: "General tournament information",
+    description: `This gives your participant teams general information and the full calendar of the tournament.`,
+  },
+);
 
 export default (app: Elysia) =>
   app.get(

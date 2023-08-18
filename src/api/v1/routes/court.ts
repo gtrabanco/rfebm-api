@@ -5,17 +5,23 @@ import {
 import { t, type Elysia } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 
-const payloadSchema = t.Object({
-  id: t.Number(),
-  city: t.String(),
-  province: t.String(),
-  postalCode: t.Number(),
-  address: t.String(),
-  phone: t.Number(),
-  latitude: t.Number(),
-  longitude: t.Number(),
-  timezone: t.String(),
-});
+const payloadSchema = t.Object(
+  {
+    id: t.Number(),
+    city: t.String(),
+    province: t.String(),
+    postalCode: t.Number(),
+    address: t.String(),
+    phone: t.Number(),
+    latitude: t.Number(),
+    longitude: t.Number(),
+    timezone: t.String(),
+  },
+  {
+    title: "Court information",
+    description: `This gives you the information details of a court. It is not all available data, you must combine this with the /courts endpoint to get all the data.`,
+  },
+);
 
 export default (app: Elysia) =>
   app.get(
