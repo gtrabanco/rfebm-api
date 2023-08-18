@@ -3,8 +3,10 @@ import type { Elysia } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
 
-selectOptionsSchema.title = "Federations";
-selectOptionsSchema.description = `Get a list of all available federations.`;
+const payloadSchema = structuredClone(selectOptionsSchema);
+
+payloadSchema.title = "Federations";
+payloadSchema.description = `Get a list of all available federations.`;
 
 export default (app: Elysia) =>
   app.get(
@@ -27,6 +29,6 @@ export default (app: Elysia) =>
       return payload;
     },
     {
-      response: responseSchemaWithPayloadSchema(selectOptionsSchema),
+      response: responseSchemaWithPayloadSchema(payloadSchema),
     },
   );
