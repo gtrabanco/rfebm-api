@@ -10,6 +10,6 @@ export const MatchMappedResult = t.Object({
   court: t.Optional(Court),
   date: t.Optional(t.String()),
   time: t.Optional(t.String()),
-  people: t.Array(Person), // Referees, annonatators...
+  people: t.Array(t.Pick(Person, ["fullName", "role"])), // Referees, annonatators...
   actions: t.Array(MatchAction),
 });

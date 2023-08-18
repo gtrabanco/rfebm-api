@@ -6,7 +6,7 @@ export const MatchAction = t.Object({
   event: t.String(),
   period: t.Numeric(),
   team: t.String(),
-  person: PersonInTeamLive,
+  people: t.Optional(PersonInTeamLive),
   score: t.Optional(
     t.Object({
       local: t.Numeric(),
