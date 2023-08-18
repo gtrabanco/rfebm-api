@@ -9,10 +9,16 @@ import { mapTournamentsWeekResultsData } from "./data-maps/map-tournament-week-r
 import { Match } from "./schemas/match";
 import { TeamInMatch } from "./schemas/team-in-match";
 
-const payloadSchema = t.Object({
-  teams: t.Array(TeamInMatch),
-  matches: t.Array(Match),
-});
+const payloadSchema = t.Object(
+  {
+    teams: t.Array(TeamInMatch),
+    matches: t.Array(Match),
+  },
+  {
+    title: "Tournament week results",
+    description: `The results of a week or whatever data that is available about the matches in the general tournament page.`,
+  },
+);
 
 export default (app: Elysia) =>
   app.get(

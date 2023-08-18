@@ -8,7 +8,7 @@ import { MatchMappedResult } from "./schemas/match-mapped-result";
 
 export default (app: Elysia) =>
   app.get(
-    "/:matchId",
+    "/:matchId/live",
     async ({ params: { matchId }, set }) => {
       const previous = await getPrevious({ matchId });
       if (!previous) {
@@ -33,5 +33,6 @@ export default (app: Elysia) =>
         }),
       }),
       response: responseSchemaWithPayloadSchema(MatchMappedResult),
+      description: "Get the current details of a match.",
     },
   );
