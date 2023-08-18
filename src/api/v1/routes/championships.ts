@@ -10,8 +10,9 @@ import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-wi
 import { responseWithErrors } from "../libraries/response-with-errors";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
 
-selectOptionsSchema.title = "Championships";
-selectOptionsSchema.description = `Get the championships that have data available for the given federation, subfederation, season and category. By default, federation is the national federation, season is the current season and subfederation and category are optional.`;
+const payloadSchema = structuredClone(selectOptionsSchema);
+payloadSchema.title = "Championships";
+payloadSchema.description = `Get the championships that have data available for the given federation, subfederation, season and category. By default, federation is the national federation, season is the current season and subfederation and category are optional.`;
 
 export default (app: Elysia) =>
   app.get(
@@ -93,6 +94,6 @@ export default (app: Elysia) =>
             "The ID of the category. You can get this ID from the /categories endpoint",
         }),
       }),
-      response: responseSchemaWithPayloadSchema(selectOptionsSchema),
+      response: responseSchemaWithPayloadSchema(payloadSchema),
     },
   );

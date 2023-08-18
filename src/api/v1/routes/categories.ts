@@ -10,8 +10,9 @@ import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-wi
 import { responseWithErrors } from "../libraries/response-with-errors";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
 
-selectOptionsSchema.title = "Categories";
-selectOptionsSchema.description =
+const payloadSchema = structuredClone(selectOptionsSchema);
+payloadSchema.title = "Categories";
+payloadSchema.description =
   "Get the categories that have data available for the given federation, subfederation and season. By default, federation is the national federation, season is the current season and subfederation is optional.";
 
 export default (app: Elysia) =>
@@ -84,6 +85,6 @@ export default (app: Elysia) =>
           }),
         ),
       }),
-      response: responseSchemaWithPayloadSchema(selectOptionsSchema),
+      response: responseSchemaWithPayloadSchema(payloadSchema),
     },
   );

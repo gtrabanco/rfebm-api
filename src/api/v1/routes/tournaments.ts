@@ -9,8 +9,10 @@ import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-wi
 import { responseWithErrors } from "../libraries/response-with-errors";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
 
-selectOptionsSchema.title = "Tournaments";
-selectOptionsSchema.description = `Get a list of all available tournaments.`;
+const payloadSchema = structuredClone(selectOptionsSchema);
+
+payloadSchema.title = "Tournaments";
+payloadSchema.description = `Get a list of all available tournaments.`;
 
 export default (app: Elysia) =>
   app.get(
@@ -100,6 +102,6 @@ export default (app: Elysia) =>
             "The ID of the championship. You can get this ID from the /championships endpoint",
         }),
       }),
-      response: responseSchemaWithPayloadSchema(selectOptionsSchema),
+      response: responseSchemaWithPayloadSchema(payloadSchema),
     },
   );
