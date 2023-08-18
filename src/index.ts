@@ -32,7 +32,8 @@ export const App = new Elysia()
       "X-Robots-Tag"
     ] = `none, noarchive, nosnippet, nositelinkssearchbox, noodp, notranslate, noimageindex, unavailable_after: ${new Date().toISOString()}`;
   })
-  .use(rateLimit(config.rateLimit))
+  .use(rateLimit(config.rateLimit.general))
+  .use(rateLimit(config.rateLimit.live))
   .use(cors())
   .use(
     swagger({
