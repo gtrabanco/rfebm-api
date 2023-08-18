@@ -28,14 +28,14 @@ export default (app: Elysia) =>
       const tournamentId = params.tournamentId;
 
       if (week) {
-        const params: WeekResultsPageParams = {};
-        if (week !== "latest") {
+        const params: WeekResultsPageParams = {
+          tournamentId,
+        };
+        if (week && week !== "latest") {
           params.week = week;
         }
 
-        const json = await getWeekResults({
-          tournamentId,
-        });
+        const json = await getWeekResults(params);
 
         if (!json || json?.results.length === 0) {
           set.status = 204;
