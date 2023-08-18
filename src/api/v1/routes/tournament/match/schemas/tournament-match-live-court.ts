@@ -1,6 +1,6 @@
 import { t } from "elysia";
 
-export const Court = t.Object({
+export const TournamentMatchLiveCourt = t.Object({
   name: t.String(),
   latitude: t.Optional(t.Numeric()),
   longitude: t.Optional(t.Numeric()),

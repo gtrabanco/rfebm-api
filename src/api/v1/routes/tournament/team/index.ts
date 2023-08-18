@@ -10,7 +10,7 @@ import { TeamInTeam } from "./schemas/team-in-team";
 
 export default (app: Elysia) =>
   app.get(
-    "/tournament/:tournamentId/team/:teamId",
+    "/:tournamentId/team/:teamId",
     async ({ params: { teamId, tournamentId }, set }) => {
       const data: GetTeam | undefined = await getTeam({ teamId, tournamentId });
       if (!data) {

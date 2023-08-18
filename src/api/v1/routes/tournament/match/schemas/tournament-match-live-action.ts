@@ -1,7 +1,7 @@
 import { t } from "elysia";
-import { PersonInTeamLive } from "./person-in-team-live";
+import { PersonInTeamLive } from "./person-in-team-tournament-match-live";
 
-export const MatchAction = t.Object({
+export const TournamentMatchLiveAction = t.Object({
   time: t.String(),
   event: t.String(),
   period: t.Numeric(),

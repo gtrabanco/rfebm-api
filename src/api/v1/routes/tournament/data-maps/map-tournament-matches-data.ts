@@ -1,4 +1,4 @@
-import { GetAllMatches } from "@gtrabanco/bun-rfebm-scraper-library";
+import { GetAllMatches } from "@gtrabanco/bun-rfebm-scraper-library/get-all-matches";
 import { mapSelectsFromInput } from "./map-selects-from-input";
 
 export function mapTournamentMatchesData(input: GetAllMatches) {

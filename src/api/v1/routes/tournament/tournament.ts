@@ -20,7 +20,7 @@ const payloadSchema = t.Object(
 
 export default (app: Elysia) =>
   app.get(
-    "/tournament/:tournamentId",
+    ":tournamentId",
     async ({ params: { tournamentId }, set }) => {
       const data = await getAllMatches({
         tournamentId,
