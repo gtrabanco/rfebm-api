@@ -54,7 +54,5 @@ export function mapMatchLive({
     return a;
   });
 
-  console.log(data);
-
   return data;
 }
