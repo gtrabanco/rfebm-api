@@ -54,4 +54,5 @@ export const App = new Elysia()
 export const endpointAddress = `${App.server!.hostname}:${App.server!.port}`;
 export type App = typeof App;
 
+console.log(`🧅 Usin Bun version ${Bun.version}`);
 console.info(`🦊 Elysia() is running at http://${endpointAddress}`);
