@@ -4,7 +4,8 @@ import {
 } from "@gtrabanco/bun-rfebm-scraper-library/get-week-results";
 import type { Elysia } from "elysia";
 import { t } from "elysia";
-import { NATIONAL_FEDERATION_ID } from "../../../constants";
+import { MINIMUM_SESION_ID, NATIONAL_FEDERATION_ID } from "../../../constants";
+import { getCurrentSeasonId } from "../../../library/get-current-season-id";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 import { responseWithErrors } from "../libraries/response-with-errors";
 import { selectOptionsSchema } from "../schemas/select-options-schema";
@@ -79,11 +80,12 @@ export default (app: Elysia) =>
           }),
         ),
         seasonId: t.Numeric({
-          minimum: 0,
-          maximum: Number.MAX_SAFE_INTEGER,
+          minimum: MINIMUM_SESION_ID,
+          maximum: getCurrentSeasonId(),
           title: "Season ID",
           description:
             "The ID of the season. Defaults to the current season. You can get this ID from the /seasons endpoint",
+          default: getCurrentSeasonId(),
         }),
         categoryId: t.Optional(
           t.Numeric({

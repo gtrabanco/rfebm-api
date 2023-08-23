@@ -1,4 +1,5 @@
 export const NATIONAL_FEDERATION_ID = 9999;
+export const MINIMUM_SESION_ID = 1819;
 
 export const VALIDATION_ERROR_CODE = "VALIDATION";
 
