@@ -1,10 +1,9 @@
 import { getWeekResults } from "@gtrabanco/bun-rfebm-scraper-library/get-week-results";
-import type { Elysia } from "elysia";
+import { t, type Elysia } from "elysia";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
-import { selectOptionsSchema } from "../schemas/select-options-schema";
+import { optionSchema } from "../schemas/select-options-schema";
 
-const payloadSchema = structuredClone(selectOptionsSchema);
-
+const payloadSchema = t.Array(optionSchema);
 payloadSchema.title = "Federations";
 payloadSchema.description = `Get a list of all available federations.`;
 
@@ -12,15 +11,12 @@ export default (app: Elysia) =>
   app.get(
     "/federations",
     async ({ set }) => {
-      const json = await getWeekResults();
-      const { federations = [] } = json ?? {};
-      const payload = federations.map(({ id, name }) => ({
-        name,
-        id,
-      }));
+      const data = await getWeekResults();
+      const payload =
+        data?.federations.map(({ id, name }) => ({ id, name })) ?? [];
 
       // No content
-      if (federations.length === 0) {
+      if (payload.length === 0) {
         set.status = 204;
         return;
       }

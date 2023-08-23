@@ -7,9 +7,9 @@ import { t } from "elysia";
 import { MINIMUM_SESION_ID, NATIONAL_FEDERATION_ID } from "../../../constants";
 import { getCurrentSeasonId } from "../../../library/get-current-season-id";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
-import { selectOptionsSchema } from "../schemas/select-options-schema";
+import { optionSchema } from "../schemas/select-options-schema";
 
-const payloadSchema = structuredClone(selectOptionsSchema);
+const payloadSchema = t.Array(optionSchema);
 payloadSchema.title = "Categories";
 payloadSchema.description =
   "Get the categories that have data available for the given federation, subfederation and season. By default, federation is the national federation, season is the current season and subfederation is optional.";

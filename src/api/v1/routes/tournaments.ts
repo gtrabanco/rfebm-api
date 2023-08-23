@@ -8,9 +8,9 @@ import { MINIMUM_SESION_ID, NATIONAL_FEDERATION_ID } from "../../../constants";
 import { getCurrentSeasonId } from "../../../library/get-current-season-id";
 import { responseSchemaWithPayloadSchema } from "../libraries/response-schema-with-payload-schema";
 import { responseWithErrors } from "../libraries/response-with-errors";
-import { selectOptionsSchema } from "../schemas/select-options-schema";
+import { optionSchema } from "../schemas/select-options-schema";
 
-const payloadSchema = structuredClone(selectOptionsSchema);
+const payloadSchema = t.Array(optionSchema);
 
 payloadSchema.title = "Tournaments";
 payloadSchema.description = `Get a list of all available tournaments.`;
