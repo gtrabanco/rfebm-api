@@ -2,6 +2,7 @@ FROM oven/bun:0.7
 LABEL org.opencontainers.image.source=https://github.com/gtrabanco/rfebm-api
 
 ARG GITHUB_TOKEN
+ARG DEBUG off
 ENV SERVER_PORT 3000
 ENV SERVER_ADDRESS 0.0.0.0
 ENV NODE_ENV production
