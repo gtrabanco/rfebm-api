@@ -54,9 +54,6 @@ export const App = new Elysia()
   .route("ALL", "", ({ set }) => {
     set.redirect = `/openapi`;
   })
-  .route("ALL", "*", ({ set }) => {
-    set.redirect = `/openapi`;
-  })
   .listen(config.serve as Partial<Serve>);
 
 export const endpointAddress = `${App.server!.hostname}:${App.server!.port}`;
