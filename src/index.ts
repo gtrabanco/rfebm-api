@@ -7,9 +7,12 @@ import { rateLimit } from "elysia-rate-limit";
 import api from "./api/index.ts";
 import { API_DOCUMENTATION } from "./config/api-documentation.ts";
 import { config } from "./config/index.ts";
-import { VALIDATION_ERROR_CODE } from "./constants.ts";
+import { NOT_FOUND_ERROR_CODE, VALIDATION_ERROR_CODE } from "./constants.ts";
 
 export const App = new Elysia()
+  .on("request", ({ request }) => {
+    console.log(`${request.method} ${request.url} - ${request.url}`);
+  })
   .on("error", ({ code, set, error }) => {
     if (code === VALIDATION_ERROR_CODE && error.type === "response") {
       set.status = 204; // No Content. If the response is not as we want is because there is no content for the request.
@@ -22,11 +25,13 @@ export const App = new Elysia()
       return "Invalid or missing param or query, value.";
     }
 
+    if (code === NOT_FOUND_ERROR_CODE) {
+      set.redirect = "/openapi";
+    }
+
     console.log("Error '%s' - %s", code, error);
   })
-  .on("request", ({ request, set }) => {
-    console.log(`${request.method} ${request.url} - ${request.url}`);
-
+  .on("response", ({ set }) => {
     // Set X-Robots-Tag header to prevent indexing
     // Reference: https://developers.google.com/search/reference/robots_meta_tag
     set.headers[
