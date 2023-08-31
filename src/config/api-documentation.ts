@@ -19,7 +19,7 @@ export const API_DOCUMENTATION = {
     title: "RFEBM API",
     description: API_DESCRIPTION,
     version: "1.0.0",
-    termsOfService: "/terms",
+    termsOfService: "/terms.html",
     contact: {
       name: "Gabriel Trabanco",
       email: "gtrabanco@fwok.org",
@@ -27,7 +27,7 @@ export const API_DOCUMENTATION = {
     },
     license: {
       name: "Private Unlicensed Code & API",
-      url: "/license",
+      url: "/license.html",
     },
   },
 };

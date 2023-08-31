@@ -1,4 +1,5 @@
 import cors from "@elysiajs/cors";
+import staticPlugin from "@elysiajs/static";
 import swagger from "@elysiajs/swagger";
 import { Serve } from "bun";
 import { Elysia } from "elysia";
@@ -32,6 +33,12 @@ export const App = new Elysia()
       "X-Robots-Tag"
     ] = `none, noarchive, nosnippet, nositelinkssearchbox, noodp, notranslate, noimageindex, unavailable_after: ${new Date().toISOString()}`;
   })
+  .use(
+    staticPlugin({
+      prefix: "",
+      assets: "public",
+    }),
+  )
   .use(rateLimit(config.rateLimit.general))
   .use(rateLimit(config.rateLimit.live))
   .use(cors())
@@ -42,6 +49,7 @@ export const App = new Elysia()
     }),
   )
   .get("/robots.txt", () => `User-agent: *\nDisallow: /`) // Disallow all robots to index anything here
+  // .get("/terms*", () => Bun.file("../public/terms.html"))
   .group("/api", (app) => app.use(api))
   .route("ALL", "", ({ set }) => {
     set.redirect = `/openapi`;
