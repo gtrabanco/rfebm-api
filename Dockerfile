@@ -7,13 +7,16 @@ ENV SERVER_PORT 3000
 ENV SERVER_ADDRESS 0.0.0.0
 ENV NODE_ENV production
 WORKDIR /app
+VOLUME [ "/app/public" ]
 
 COPY package.json .
 COPY bunfig.toml .
 COPY bun.lockb .
 COPY src src
 COPY tsconfig.json .
-# COPY public public
+# Would be best idea not to inlclude public in the Image
+# and use a folder in the VPS to serve public files
+COPY public public
 
 RUN bun install --production --ignore-scripts
 
