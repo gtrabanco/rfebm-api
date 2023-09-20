@@ -41,6 +41,8 @@ export default (app: Elysia) =>
         }),
       );
 
+      console.log(payload);
+
       if (payload.length === 0) {
         set.status = 204;
         return;
@@ -68,6 +70,6 @@ export default (app: Elysia) =>
           }),
         ),
       }),
-      response: responseSchemaWithPayloadSchema(seasonSchema),
+      response: responseSchemaWithPayloadSchema(t.Array(seasonSchema)),
     },
   );
