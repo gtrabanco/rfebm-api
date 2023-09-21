@@ -11,7 +11,7 @@ import { NOT_FOUND_ERROR_CODE, VALIDATION_ERROR_CODE } from "./constants.ts";
 
 export const App = new Elysia()
   .on("request", ({ request }) => {
-    console.log(`${request.method} ${request.url} - ${request.url}`);
+    console.log(`${request.method} - ${request.url}`);
   })
   .on("error", ({ code, set, error }) => {
     if (code === VALIDATION_ERROR_CODE && error.type === "response") {
