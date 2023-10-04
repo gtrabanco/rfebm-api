@@ -1,13 +1,19 @@
 import { t } from "elysia";
-import { federationSchema } from "../../../schemas/federation-schema";
 import { seasonSchema } from "../../../schemas/season-schema";
 import { optionSchema } from "../../../schemas/select-options-schema";
 import { CourtInMatch } from "./court-in-match";
 import { TeamInMatch } from "./team-in-match";
 
+const matchFederationSchema = t.Object({
+  id: t.Number(),
+  name: t.String(),
+  shieldImageUrl: t.String(),
+  web: t.Optional(t.String()),
+});
+
 export const Match = t.Object({
   id: t.Number(),
-  federation: federationSchema,
+  federation: matchFederationSchema,
   season: seasonSchema,
   category: optionSchema,
   championship: optionSchema,
