@@ -1,5 +1,4 @@
 import cors from "@elysiajs/cors";
-import staticPlugin from "@elysiajs/static";
 import swagger from "@elysiajs/swagger";
 import { Serve } from "bun";
 import { Elysia } from "elysia";
@@ -8,6 +7,7 @@ import api from "./api/index.ts";
 import { API_DOCUMENTATION } from "./config/api-documentation.ts";
 import { config } from "./config/index.ts";
 import { NOT_FOUND_ERROR_CODE, VALIDATION_ERROR_CODE } from "./constants.ts";
+import staticPlugin from "@elysiajs/static";
 
 export const App = new Elysia()
   .on("request", ({ request }) => {
@@ -39,8 +39,8 @@ export const App = new Elysia()
   })
   .use(
     staticPlugin({
-      prefix: "",
-      assets: "public",
+      assets: "",
+      prefix: "public",
     }),
   )
   .use(rateLimit(config.rateLimit.general))
