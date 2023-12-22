@@ -19,31 +19,31 @@
     "build:binary": "rm -f rfebm-api && bun build --compile ./src/index.ts --outfile rfebm-api"
   },
   "dependencies": {
-    "@elysiajs/cors": "0.7.1",
+    "@elysiajs/cors": "0.7.2",
     "@elysiajs/static": "0.7.1",
-    "@elysiajs/swagger": "0.7.3",
+    "@elysiajs/swagger": "0.7.4",
     "@gtrabanco/bun-rfebm-scraper-library": "1.1.6",
-    "elysia": "0.7.15",
-    "elysia-rate-limit": "1.2.0"
+    "elysia": "0.7.30",
+    "elysia-rate-limit": "2.0.1"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "6.7.4",
-    "@typescript-eslint/parser": "6.7.4",
-    "bun-types": "1.0.4-canary.20231004T140131",
-    "eslint": "8.50.0",
-    "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-prettier": "5.0.0",
+    "@typescript-eslint/eslint-plugin": "6.15.0",
+    "@typescript-eslint/parser": "6.15.0",
+    "bun-types": "1.0.19",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.1",
     "husky": "8.0.3",
-    "lint-staged": "14.0.1",
-    "prettier": "3.0.3",
+    "lint-staged": "15.2.0",
+    "prettier": "3.1.1",
     "relative-deps": "1.0.7",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   },
   "peerDependencies": {
     "typescript": ">=5.2.2"
   },
   "engines": {
-    "bun": "0.7.3"
+    "bun": "1.0.19"
   },
   "relativeDependencies": {
     "@gtrabanco/bun-rfebm-scraper-library": "../bun-rfebm-scraper-library"
